@@ -1,4 +1,4 @@
-# Reproducible Research Fundamentals 2024
+# Reproducible Research Fundamentals 2025
 ## Using GitHub for Collaborative Research - README
 
 ## Introduction
@@ -32,9 +32,9 @@ We use this method because, as many of you are new to GitHub, having all you wor
 ### 1. Import the Repository
 
 1. Go to the GitHub import page: [GitHub Importer](https://github.com/new/import).
-2. In the `The URL for your source repository*` field, paste the following URL: `https://github.com/dime-wb-trainings/GitHub-rrf-24`.
+2. In the `The URL for your source repository*` field, paste the following URL: `https://github.com/dime-wb-trainings/GitHub-rrf-25`.
 3. Under `Owner`" select your personal GitHub account from the dropdown.
-4. In the "Repository name" field, choose the name for your personal repository (`GitHub-rrf24-yourname`).
+4. In the "Repository name" field, choose the name for your personal repository (`GitHub-rrf25-yourinitials`).
 5. Click **Begin Import**.
 6. Once the import is complete, your new repository will be available under your GitHub account.
 
@@ -42,7 +42,7 @@ We use this method because, as many of you are new to GitHub, having all you wor
 
 ### 2. Set Up Locally
 
-1. Go to your new personal repository on GitHub.`https://github.com/your-username/GitHub-rrf-24-yourname`
+1. Go to your new personal repository on GitHub.`https://github.com/your-username/GitHub-rrf-25-yourinitials`
 2. Click the green "Code" button and select **Open with GitHub Desktop**
 3. Follow the prompts to clone the repository locally and ensure it is set up for the rest of the training.
 
@@ -84,11 +84,10 @@ During this training and your projects we recommend you to follow the principle 
 - Make sure to regularly *create branches*, *commit and push changes*, and *merge* them to keep your work organized and trackable.
 - While you don’t need to branch excessively since this is your own project, we recommend the following workflow:
   - Create a new branch for each session, for example:
-    - `rrf24_processing` → make changes and `commit` → merge back to `main`
-    - `rrf24_construction` → make changes and `commit` → merge back to `main`
-    - `rrf24_analysis`→ make changes and `commit` → merge back to `main`
-    - `rrf24_create_package` → make changes and `commit` → merge back to `main`
-
+    - `rrf25_processing` → make changes and `commit` → merge back to `main`
+    - `rrf25_construction` → make changes and `commit` → merge back to `main`
+    - `rrf25_analysis`→ make changes and `commit` → merge back to `main`
+    - `rrf25_create_package` → make changes and `commit` → merge back to `main`
 ---
 
 ## Overview of Upcoming Sessions

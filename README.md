@@ -82,12 +82,7 @@ During this training and your projects we recommend you to follow the principle 
 - **You will be working on this repository throughout most of the hands-on sessions.**
 - Each session will build on the previous one, and by the end, you will create a reproducibility package.
 - Make sure to regularly *create branches*, *commit and push changes*, and *merge* them to keep your work organized and trackable.
-- While you don’t need to branch excessively since this is your own project, we recommend the following workflow:
-  - Create a new branch for each session, for example:
-    - `rrf25_processing` → make changes and `commit` → merge back to `main`
-    - `rrf25_construction` → make changes and `commit` → merge back to `main`
-    - `rrf25_analysis`→ make changes and `commit` → merge back to `main`
-    - `rrf25_create_package` → make changes and `commit` → merge back to `main`
+
 ---
 
 ## Overview of Upcoming Sessions

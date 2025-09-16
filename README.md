@@ -50,7 +50,7 @@ We use this method because, as many of you are new to GitHub, having all you wor
 
 You will now have a local copy of the repository to work on for the rest of the week.
 
-![](img/local-copy.png)
+![](img/mac_folder.png)
 
 ### 3. Creating a Branch in the project
 

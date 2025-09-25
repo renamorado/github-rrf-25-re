@@ -1,10 +1,49 @@
-* RRF 2024 - Analyzing Data Template	
+* RRF 2025 - Analyzing Data Template	
 *-------------------------------------------------------------------------------	
 * Load data
 *------------------------------------------------------------------------------- 
 	
 	*load analysis data 
+	
+	
+*-------------------------------------------------------------------------------	
+* Exploratory Analysis
+*------------------------------------------------------------------------------- 
+	
+	* Area over treatment by districts 
+	gr bar 	???, ///
+			over(???) ///
+			by(???)
 
+*-------------------------------------------------------------------------------	
+* Final Analysis
+*------------------------------------------------------------------------------- 
+
+
+	* Bar graph by treatment for all districts 
+	gr bar 	???, ///
+			over(??) ///
+			by(	????) ///
+			????
+			
+	gr export "$outputs/fig1.png", replace	
+	
+	* Distribution of non food consumption by female headed hhs with means
+
+
+	twoway	(kdensity ???, color(???)) ///
+			(kdensity ???, color(???)) ///
+			, ///
+			xline(???, lcolor(???) 	lpattern(???)) ///
+			xline(???, lcolor(???) 	lpattern(???)) ///
+			leg(order(0 "Household Head:" 1 "???" 2 "???" ) row(???) pos(???)) ///
+			xtitle("???") ///
+			ytitle("???") ///
+			title("???") ///
+			note("???")
+			
+	gr export "$outputs/fig2.png", replace	
+	
 *-------------------------------------------------------------------------------	
 * Summary stats
 *------------------------------------------------------------------------------- 
@@ -28,6 +67,7 @@
 	* Also export in tex for latex
 	???
 			
+			
 *-------------------------------------------------------------------------------	
 * Balance tables
 *------------------------------------------------------------------------------- 	
@@ -39,7 +79,7 @@
 				format(???)	///
 				savecsv(???) ///
 				savetex(???) ///
-				nonote addnote(???) replace 			
+				nonote addnote(???) replace 		
 
 				
 *-------------------------------------------------------------------------------	
@@ -47,6 +87,7 @@
 *------------------------------------------------------------------------------- 				
 				
 	* Model 1: Regress of food consumption value on treatment
+	regress food_cons_usd_w treatment
 	regress
 	eststo ???		// store regression results
 	
@@ -65,30 +106,6 @@
 			mgroup("???", pattern(1 0 0 ) span) ///
 			scalars("???") ///
 			replace
-			
-*-------------------------------------------------------------------------------			
-* Graphs 
-*-------------------------------------------------------------------------------	
-
-	* Bar graph by treatment for all districts 
-	gr bar ???
-	
-	gr export "$outputs/fig1.png", replace		
-			
-	* Distribution of non food consumption by female headed hhs with means
-
-	twoway	(kdensity ???, color(???)) ///
-			(kdensity ???, color(???)) ///
-			, ///
-			xline(???, lcolor(???) 	lpattern(???)) ///
-			xline(???, lcolor(???) 	lpattern(???)) ///
-			leg(order(0 "Household Head:" 1 "???" 2 "???" ) row(???) pos(???)) ///
-			xtitle("???") ///
-			ytitle("???") ///
-			title("???") ///
-			note("???")
-			
-	gr export "$outputs/fig2.png", replace				
 			
 *-------------------------------------------------------------------------------			
 * Graphs: Secondary data
@@ -117,7 +134,6 @@
 				title("???", size(???))
 			
 	
-	gr export "$outputs/fig3.png", replace			
+	gr export "$outputs/fig3.png", replace		
 
-****************************************************************************end!
-	
+****************************************************************************end!			

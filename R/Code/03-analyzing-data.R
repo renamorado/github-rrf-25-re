@@ -1,7 +1,7 @@
 # Reproducible Research Fundamentals 
 # 03. Data Analysis
 
-# Libraries
+# Libraries -----
 # library(haven)
 # library(dplyr)
 # library(modelsummary)
@@ -9,7 +9,7 @@
 # library(ggplot2)
 # library(tidyr)
 
-# Load data 
+# Load data -----
 #household level data
 data_path <- "ADD-YOUR-PATH"
 hh_data   <- read_dta(file.path(data_path, "Final/TZA_CCT_analysis.dta"))
@@ -18,7 +18,58 @@ hh_data   <- read_dta(file.path(data_path, "Final/TZA_CCT_analysis.dta"))
 secondary_data <- read_dta(file.path(data_path, "Final/TZA_amenity_analysis.dta")) %>%
     mutate(district = as_factor(district))
 
-# Summary statistics ----
+# Exercise 1 and 2: Create graph of area by district -----
+
+# Bar graph by treatment for all districts
+# Ensure treatment is a factor for proper labeling
+hh_data_plot <- hh_data %>%
+    mutate(treatment = factor(treatment, labels = c("Control", "Treatment")), 
+           district = as_factor(district))
+
+# Create the bar plot
+# Create the bar plot
+ggplot(hh_data_plot, aes(......) +
+           geom_bar(......) +
+           geom_text(......) +  # Add text labels
+           facet_wrap(......) +  # Facet by district
+           labs(title = "Area cultivated by treatment assignment across districts",
+                x = NULL, y = "Average area cultivated (Acre)") +  # Remove x-axis title
+           theme_minimal() +
+           ...... # Add other customization if needed
+       
+       ggsave(file.path("Outputs", "fig1.png"), width = 10, height = 6)
+       
+       
+# Exercise 3: Create a density plot of non-food consumption -----
+       
+# Calculate mean non-food consumption for female and male-headed households
+mean_female <- hh_data %>% 
+   filter(female_head == 1) %>% 
+   summarise(mean = mean(nonfood_cons_usd_w, na.rm = TRUE)) %>% 
+   pull(mean)
+
+mean_male <- hh_data %>% 
+   filter(female_head == 0) %>% 
+   summarise(mean = mean(nonfood_cons_usd_w, na.rm = TRUE)) %>% 
+   pull(mean)
+
+# Create the density plot
+ggplot(hh_data, 
+      aes(......)) +
+   geom_density(......) +  # Density plot
+   geom_vline(xintercept = ......, color = "purple", linetype = "dashed", size = 1) +  # Vertical line for female mean
+   geom_vline(xintercept = ......, color = "grey", linetype = "dashed", size = 1) +  # Vertical line for male mean
+   labs(title = "Distribution of Non-Food Consumption",
+        x = "Non-food consumption value (USD)", 
+        y = "Density",
+        color = "Household Head:") +  # Custom labels
+   theme_minimal() +
+   ...... # Add other customization if needed
+
+ggsave(file.path("Outputs", "fig2.png"), width = 10, height = 6)
+       
+
+# Exercise 4: Summary statistics ----
 
 # Create summary statistics by district and export to CSV
 summary_table <- datasummary(
@@ -29,7 +80,7 @@ summary_table <- datasummary(
 )
 
 
-# Balance table ----
+# Exercise 5: Balance table ----
 balance_table <- datasummary_balance(
     ...... ~ ......,
     data = hh_data,
@@ -39,7 +90,7 @@ balance_table <- datasummary_balance(
     output = file.path("Outputs", "balance_table.csv")  # Change to CSV
 )
 
-# Regressions ----
+# Exercise 6: Regressions ----
 
 # Model 1: Food consumption regressed on treatment
 model1 <- lm(......, data = hh_data)
@@ -67,57 +118,7 @@ stargazer(
     out = file.path("Outputs","regression_table.tex")
 )
 
-# Graphs: Area cultivated by treatment assignment across districts ----
-
-# Bar graph by treatment for all districts
-# Ensure treatment is a factor for proper labeling
-hh_data_plot <- hh_data %>%
-    mutate(treatment = factor(treatment, labels = c("Control", "Treatment")), 
-           district = as_factor(district))
-
-# Create the bar plot
-# Create the bar plot
-ggplot(hh_data_plot, aes(......) +
-    geom_bar(......) +
-    geom_text(......) +  # Add text labels
-    facet_wrap(......) +  # Facet by district
-    labs(title = "Area cultivated by treatment assignment across districts",
-         x = NULL, y = "Average area cultivated (Acre)") +  # Remove x-axis title
-    theme_minimal() +
-    ...... # Add other customization if needed
-
-ggsave(file.path("Outputs", "fig1.png"), width = 10, height = 6)
-
-
-# Graphs: Distribution of non-food consumption by female-headed households ----
-
-# Calculate mean non-food consumption for female and male-headed households
-mean_female <- hh_data %>% 
-    filter(female_head == 1) %>% 
-    summarise(mean = mean(nonfood_cons_usd_w, na.rm = TRUE)) %>% 
-    pull(mean)
-
-mean_male <- hh_data %>% 
-    filter(female_head == 0) %>% 
-    summarise(mean = mean(nonfood_cons_usd_w, na.rm = TRUE)) %>% 
-    pull(mean)
-
-# Create the density plot
-ggplot(hh_data, 
-       aes(......)) +
-    geom_density(......) +  # Density plot
-    geom_vline(xintercept = ......, color = "purple", linetype = "dashed", size = 1) +  # Vertical line for female mean
-    geom_vline(xintercept = ......, color = "grey", linetype = "dashed", size = 1) +  # Vertical line for male mean
-    labs(title = "Distribution of Non-Food Consumption",
-         x = "Non-food consumption value (USD)", 
-         y = "Density",
-         color = "Household Head:") +  # Custom labels
-    theme_minimal() +
-    ...... # Add other customization if needed
-
-ggsave(file.path("Outputs", "fig2.png"), width = 10, height = 6)
-
-# Graphs: Secondary data ----
+# Exercise 7: Combining two plots ----
 
 long_data <- secondary_data %>%
     ungroup() %>% 

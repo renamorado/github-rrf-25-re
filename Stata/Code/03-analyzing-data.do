@@ -5,7 +5,7 @@
 	ssc install ietoolkit
 	*load analysis data 
 use "${data}/Final/TZA_CCT_analysis.dta"	, clear
-set scheme plotplain
+*set scheme plotplainplain
 *-------------------------------------------------------------------------------	
 * Exploratory Analysis
 *------------------------------------------------------------------------------- 
@@ -73,7 +73,7 @@ forvalues hh_head = 0/1 {
 	esttab 	all district_* ///
 			using "${outputs}/summary_1.csv", replace ///
 			label ///
-			refcat(hhsize "HH Chars" drought_flood "Shocks" )
+			refcat(hhsize "HH Chars" drought_flood "Shocks" ) ///
 			main(mean %6.2f) aux(sd) ///
 			mtitle("Full sample" "Kibaha" "Bagamoyos" "Chamwino") ///
 			nonotes addn(Mean with standards deviations in parentheses)
@@ -87,7 +87,7 @@ forvalues hh_head = 0/1 {
 *-------------------------------------------------------------------------------	
 * Balance tables
 *------------------------------------------------------------------------------- 	
-	
+	/*
 	* Balance (if they purchased cows or not)
 	iebaltab 	$sumvars , ///
 				grpvar(treatment) ///
@@ -95,7 +95,8 @@ forvalues hh_head = 0/1 {
 				format(???)	///
 				savecsv(???) ///
 				savetex(???) ///
-				nonote addnote(???) replace 		
+				nonote addnote(???) replace 	
+	*/			
 *
 				
 *-------------------------------------------------------------------------------	

@@ -26,10 +26,10 @@
 	global outputs 	"${github}/Stata/Outputs"
 	global raw "${data}/raw"
 
-	*sysdir set PLUS "???"
+	sysdir set PLUS "${code}/ado"
 
 
-	* Install packages 
+	/* Install packages 
 	local user_commands	ietoolkit iefieldkit winsor sumstats estout keeporder grc1leg2 //Add required user-written commands
 
 	foreach command of local user_commands {
@@ -38,10 +38,10 @@
 		   ssc install `command'
 	   }
 	}
-
+*/
 	* Run do files 
 	* Switch to 0/1 to not-run/run do-files 
-	if (0) do "${code}/01-processing-data.do"
+	if (1) do "${code}/01-processing-data.do"
 	if (1) do "${code}/02-constructing-data.do"
 	if (1) do "${code}/03-analyzing-data.do"
 
